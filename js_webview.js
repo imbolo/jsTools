@@ -1,4 +1,8 @@
-//加载命令url
+/**
+* 加载url
+* 目的是让浏览器端得到加载某一特定url命令的同时，页面不跳转。
+* hybrid app
+* */
 function loadURL(url) {
     var iFrame;
     iFrame = document.createElement("iframe");
