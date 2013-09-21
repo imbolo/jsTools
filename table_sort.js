@@ -16,10 +16,17 @@ function enhanceTable(table) {
 	}
 	//排序Table函数
 	function sortTable(table, indexOfColumn, isAsc) {
-		var arrTableRows = [];
-		for(var i=0; i<table.tBodies[0].rows.length; i++) {
-			arrTableRows.push( table.tBodies[0].rows[i] );
+		var arrTableRows;
+		try {
+			arrTableRows = Array.prototype.slice.call(table.tBodies[0].rows);
+		} catch (ex) {
+			arrTableRows = []
+			for(var i=0; i<table.tBodies[0].rows.length; i++) {
+				arrTableRows.push( table.tBodies[0].rows[i] );
+			}
 		}
+		
+		
 		//简单起见，排序规则就是字符串比较，一般情况够用了
 		arrTableRows.sort( function (a, b) {
 			return isAsc==true? 
